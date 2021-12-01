@@ -1,0 +1,36 @@
+{% extends "layout.html.twig" %}
+
+{% block tieude %}
+   Đại học Greenwich Việt Nam
+{% endblock %}
+
+{% block body %}
+   <h3>Welcome to Greenwich University (Vietnam)</h3>
+   <img src="{{ asset ('images/greenwich.jpg')}}" alt="">
+{% endblock %}
+
+{% block extra %}
+   <br>
+   {% for i in range (0,3) %}
+      {{ i }}
+   {% endfor %}
+   <br>
+   {% for i in range (0, 10, 2) %}
+      {{ i }}
+   {% endfor %}
+   <br>
+   {% set x = [1,2,3,4,5,6,7,8]%}
+   {{ max (x)}}
+   <br>
+   {% set y = ["a", "aa", "aaa", "aaaa", "aaaaa"] %}
+   {% for y1 in y %}
+      {% if y1 | length >=3 %}
+      {{ y1 }}
+   {% endif %}
+   {% endfor %}
+   <br>
+   {% if y | length > 2 %}
+      <p>true</p>
+   {% endif %}
+   
+{% endblock %}

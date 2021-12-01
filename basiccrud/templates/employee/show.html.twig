@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Employee{% endblock %}
+
+{% block body %}
+    <h1>Employee</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ employee.id }}</td>
+                <td><?= employee.id ?> </td>
+            </tr>
+            <tr>
+                <th>EmployeeName</th>
+                <td>{{ employee.EmployeeName }}</td>
+            </tr>
+            <tr>
+                <th>EmployeeAge</th>
+                <td>{{ employee.EmployeeAge }}</td>
+            </tr>
+            <tr>
+                <th>EmployeeMobile</th>
+                <td>{{ employee.EmployeeMobile }}</td>
+            </tr>
+            <tr>
+                <th>EmployeeAddress</th>
+                <td>{{ employee.EmployeeAddress }}</td>
+            </tr>
+            <tr>
+                <th>EmployeeSalary</th>
+                <td>{{ employee.EmployeeSalary }}</td>
+            </tr>
+            <tr>
+                <th>EmployeeBirthday</th>
+                <td>{{ employee.EmployeeBirthday ? employee.EmployeeBirthday|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('employee_index') }}">back to list</a>
+
+    <a href="{{ path('employee_edit', {'id': employee.id}) }}">edit</a>
+
+    {{ include('employee/_delete_form.html.twig') }}
+{% endblock %}

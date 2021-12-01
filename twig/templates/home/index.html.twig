@@ -1,0 +1,33 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <a href="{{ path ('demo')}}">Demo page</a>
+    {% set date = "Sunday" %}
+    {% set symfony = "Symfony framework" %}
+    {% set a = 3 %}
+    {% set b = 5 %}
+    {% set c = a + b %}
+    <h3>Tomorrow is {{ date }}</h3>
+    <h4>We are learning {{ symfony }}</h4>
+    <h4>c = {{ c }}</h4>
+    {% set city = ["Hanoi", "HCM City", "Danang"] %}
+    {% for c in city %}
+        {{ c }}
+    {% endfor %}
+    <br>
+    {% set grade = 4.5 %}
+    {% if grade >=5 %}
+        <i>You have passed the exam</i>
+    {% else %}
+        <i>You have failed the exam</i>
+    {% endif %}
+    <br>
+    {% set x = 5 %}
+    {% set y = 10 %}
+    Max: {{ max (x,y) }} <br>
+    Min: {{ min (1,2,3,4,5) }}
+    {% if city | length >= 6 %}
+        {{ city }}
+    {% endif %}
+{% endblock %}
+    

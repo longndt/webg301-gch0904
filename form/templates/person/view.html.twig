@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+   <h1>Add Person successfully !</h1>
+   <h3>Person Name: {{ name}} </h3>
+   <h3>Person Age: {{ age }} </h3>
+   <h3>Person Birthday: {{ birthday | date("d/m/Y") }} </h3>
+   <h3>Person Gender: {{ gender }}</h3>
+{% endblock %}
