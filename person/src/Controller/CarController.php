@@ -14,13 +14,23 @@ class CarController extends AbstractController
      */
     public function viewAllCar () {
         $cars = $this->getDoctrine()->getRepository(car::class)->findAll();
+        return $this->render("car/index.html.twig",
+            [
+                'cars' => $cars
+            ]
+        );
     }
 
     /**
      * @Route("/car/view/{id}", name = "view_car")
      */
     public function viewCar ($id) {
-        
+        $car = $this->getDoctrine()->getRepository(car::class)->find($id);
+        return $this->render("car/detail.html.twig",
+            [
+                'car' => $car
+            ]
+        );
     }
 
     /**
