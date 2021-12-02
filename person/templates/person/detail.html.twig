@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+   <div class="container">
+      <table class="table text-center">
+         <thead>
+            <tr>
+               <th>Person ID</th>
+               <th>Person Name</th>
+               <th>Person Age</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>{{ person.id }}</td>
+               <td>{{ person.PersonName}}</td>
+               <td>{{ person.PersonAge }}</td>
+            </tr>
+         </tbody> 
+      </table>
+   </div>
+{% endblock %}

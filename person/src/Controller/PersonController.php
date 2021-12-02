@@ -38,7 +38,11 @@ class PersonController extends AbstractController
      * @Route("/person/delete/{id}", name = "delete_person_by_id")
      */
     public function deletePerson ($id) {
-
+        $person = $this->getDoctrine()->getRepository(Person::class)->find($id);
+        $manager = $this->getDoctrine()->getManager();
+        $manager->remove($person);
+        $manager->flush();
+        return $this->redirectToRoute("view_all_person");
     }
 
     /**

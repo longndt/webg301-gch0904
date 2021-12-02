@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+   <div class="container">
+      <table class="table text-center">
+         <thead>
+            <tr>
+               <th>Car ID</th>
+               <th>Car Name</th>
+               <th>Car Brand</th>
+               <th>Car Model</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td>{{ car.id }}</td>
+               <td>{{ car.CarName }}</td>
+               <td>{{ car.CarBrand }}</td>
+               <td>{{ car.CarModel }}</td>
+            </tr>
+         </tbody> 
+      </table>
+   </div>
+{% endblock %}

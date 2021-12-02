@@ -2,18 +2,18 @@
 
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Car;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CarController extends AbstractController
 {
-      /**
+    /**
      * @Route("/car/viewall/" , name = "view_all_car")
      */
     public function viewAllCar () {
-        $cars = $this->getDoctrine()->getRepository(car::class)->findAll();
+        $cars = $this->getDoctrine()->getRepository(Car::class)->findAll();
         return $this->render("car/index.html.twig",
             [
                 'cars' => $cars
@@ -25,7 +25,7 @@ class CarController extends AbstractController
      * @Route("/car/view/{id}", name = "view_car")
      */
     public function viewCar ($id) {
-        $car = $this->getDoctrine()->getRepository(car::class)->find($id);
+        $car = $this->getDoctrine()->getRepository(Car::class)->find($id);
         return $this->render("car/detail.html.twig",
             [
                 'car' => $car

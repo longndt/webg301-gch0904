@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Job;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,14 +14,22 @@ class JobController extends AbstractController
      * @Route("/job/viewall/" , name = "view_all_job")
      */
     public function viewAllJob () {
-        $jobs = $this->getDoctrine()->getRepository(job::class)->findAll();
+        $jobs = $this->getDoctrine()->getRepository(Job::class)->findAll();
+        return $this->render("job/index.html.twig",
+        [
+            'jobs' => $jobs
+        ]);
     }
 
     /**
      * @Route("/job/view/{id}", name = "view_job")
      */
     public function viewJob ($id) {
-        
+        $job = $this->getDoctrine()->getRepository(Job::class)->find($id);
+        return $this->render("job/detail.html.twig",
+        [
+            'job' => $job
+        ]);
     }
 
     /**

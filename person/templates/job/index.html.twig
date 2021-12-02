@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+   <div class="container">
+       <table class="table table-striped">
+         <thead>
+            <tr>
+               <th>Job ID</th>
+               <th>Job Name</th>
+               <th>Menu</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for job in jobs %}
+               <tr>
+                  <td>{{ job.id }}</td>
+                  <td>{{ job.JobName }}</td>
+                  <td>
+                     <a class="btn btn-primary" href="{{ path ('view_job', {'id' : job.id }) }}">
+                     DETAIL
+                     </a>
+                  </td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </div>
+{% endblock %}
