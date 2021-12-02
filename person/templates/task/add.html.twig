@@ -1,0 +1,11 @@
+{% form_theme taskForm 'bootstrap_5_layout.html.twig' %}
+
+{% extends "base.html.twig" %}
+
+{% block body %}
+   {# {{ form (taskForm) }} #}
+   <div class="container">
+      {{ form_start (taskForm) }}
+      {{ form_end (taskForm) }}
+   </div>
+{% endblock %}
