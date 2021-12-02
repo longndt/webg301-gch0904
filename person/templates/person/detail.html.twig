@@ -17,20 +17,20 @@
          </thead>
          <tbody>
                <tr>
-                  <td>{{ person.PersonName }}  </td>
+                  <td>{{ person.PersonName }} </td>
                   <td>{{ person.PersonAge }} </td>
                   <td>
-                     {% if person.personDetail.PersonAddress != null %}
+                     {% if person.personDetail != null %}
                         {{ person.personDetail.PersonAddress }}
                      {% endif %}       
                   </td>
                   <td>
-                     {% if person.personDetail.PersonMobile != null %}
+                     {% if person.personDetail != null %}
                           {{ person.personDetail.PersonMobile }}
                      {% endif %}        
                   </td>
                   <td>
-                     {% if person.personDetail.PersonBirthday != null %}
+                     {% if person.personDetail != null %}
                         {{ person.personDetail.PersonBirthday | date('d/m/Y') }}
                      {% endif %}
                   </td>
