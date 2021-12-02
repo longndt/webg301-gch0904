@@ -7,24 +7,21 @@
             <tr>
                <th>Person ID</th>
                <th>Person Name</th>
+               <th>Person Age</th>
                <th>Menu</th>
             </tr>
          </thead>
          <tbody>
-            {% for person in persons %}
                <tr>
                   <td>{{ person.id }}</td>
-                  <td> {{ person.PersonName }} </td>
+                  <td> {{ person.PersonName }}  </td>
+                  <td>{{ person.PersonAge }} </td>
                   <td>
-                     <a class="btn btn-primary" href="{{ path('view_person', {'id' : person.id }) }}">
-                        DETAIL
-                     </a>
                      <a class="btn btn-danger" href="{{ path('delete_person_by_id', {'id' : person.id }) }}">
                         DELETE
                      </a>
                   </td>
                </tr>
-            {% endfor %}    
          </tbody> 
       </table>
    </div>

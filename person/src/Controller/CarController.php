@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Car;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,7 +38,11 @@ class CarController extends AbstractController
      * @Route("/car/delete/{id}", name = "delete_car_by_id")
      */
     public function deleteCar ($id) {
-
+       $car = $this->getDoctrine()->getRepository(Car::class)->find($id);
+       $manager = $this->getDoctrine()->getManager();
+       $manager->remove($car);
+       $manager->flush();
+       return $this->redirectToRoute("view_all_car");
     }
 
     /**

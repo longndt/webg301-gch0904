@@ -19,6 +19,9 @@
                      <a class="btn btn-primary" href="{{ path ('view_job', {'id' : job.id }) }}">
                      DETAIL
                      </a>
+                     <a class="btn btn-danger" href="{{ path ('delete_job_by_id', {'id' : job.id }) }}">
+                     DELETE
+                     </a>
                   </td>
                </tr>
             {% endfor %}

@@ -36,7 +36,10 @@ class JobController extends AbstractController
      * @Route("/job/delete/{id}", name = "delete_job_by_id")
      */
     public function deleteJob ($id) {
-
+        $job = $this->getDoctrine()->getRepository(Job::class)->find($id);
+        $manager = $this->getDoctrine()->getManager();
+        $manager->remove($job);
+        return $this->redirectToRoute("view_all_job");
     }
 
     /**

@@ -23,6 +23,9 @@
                      <a class="btn btn-primary" href="{{ path('view_car', {'id' : car.id }) }}">
                         DETAIL
                      </a>
+                      <a class="btn btn-danger" href="{{ path('delete_car_by_id', {'id' : car.id }) }}">
+                        DELETE
+                     </a>
                   </td>
                </tr>
             {% endfor %}    
