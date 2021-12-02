@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Person;
+use App\Entity\PersonDetail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -27,7 +28,8 @@ class PersonController extends AbstractController
      */
     public function viewPerson ($id) {
         $person = $this->getDoctrine()->getRepository(Person::class)->find($id);
-        return $this->render("person/view.html.twig",
+   
+        return $this->render("person/detail.html.twig",
             [
                 'person' => $person
             ]

@@ -1,0 +1,62 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+   <div class="container">
+      <table class="table text-center">
+         <thead>
+            <tr>
+               <th>Person Name</th>
+               <th>Person Age</th>
+               <th>Person Address</th>
+               <th>Person Mobile</th>
+               <th>Person Birthday</th>
+               <th>Person Cars</th>
+               <th>Person Jobs</th>
+               <th>Menu</th>
+            </tr>
+         </thead>
+         <tbody>
+               <tr>
+                  <td>{{ person.PersonName }}  </td>
+                  <td>{{ person.PersonAge }} </td>
+                  <td>
+                     {% if person.personDetail.PersonAddress != null %}
+                        {{ person.personDetail.PersonAddress }}
+                     {% endif %}       
+                  </td>
+                  <td>
+                     {% if person.personDetail.PersonMobile != null %}
+                          {{ person.personDetail.PersonMobile }}
+                     {% endif %}        
+                  </td>
+                  <td>
+                     {% if person.personDetail.PersonBirthday != null %}
+                        {{ person.personDetail.PersonBirthday | date('d/m/Y') }}
+                     {% endif %}
+                  </td>
+                  <td> 
+                     {% for car in person.cars %}
+                       <a href="{{ path('view_car', {'id' : car.id }) }}">
+                           {{ car.CarName }}
+                       </a>
+                       <br>
+                     {% endfor %}
+                  </td>
+                  <td>
+                     {% for job in person.jobs %}
+                        <a href="{{ path('view_job', {'id' : job.id }) }}">
+                             {{ job.JobName }}
+                        </a>
+                        <br>
+                     {% endfor %}
+                   </td>
+                  <td>
+                     <a class="btn btn-danger" href="{{ path('delete_person_by_id', {'id' : person.id }) }}">
+                        DELETE
+                     </a>
+                  </td>
+               </tr>
+         </tbody> 
+      </table>
+   </div>
+{% endblock %}

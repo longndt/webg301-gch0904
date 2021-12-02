@@ -9,6 +9,7 @@
                <th>Car Name</th>
                <th>Car Brand</th>
                <th>Car Model</th>
+               <th>Menu</th>
             </tr>
          </thead>
          <tbody>
@@ -17,6 +18,11 @@
                <td>{{ car.CarName }}</td>
                <td>{{ car.CarBrand }}</td>
                <td>{{ car.CarModel }}</td>
+               <td>
+                     <a class="btn btn-danger" href="{{ path('delete_car_by_id', {'id' : car.id }) }}">
+                     DELETE
+                  </a>
+               </td>
             </tr>
          </tbody> 
       </table>
