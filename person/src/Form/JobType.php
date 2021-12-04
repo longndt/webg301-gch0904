@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Job;
+use App\Entity\Person;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
@@ -39,7 +41,14 @@ class JobType extends AbstractType
                 'required' => true,
                 'currency' => 'USD'
             ])
-            // ->add('Person')
+            ->add('Person', EntityType::class,
+            [
+                'label' => 'Car Owner',
+                'class' => Person::class,
+                'choice_label' => 'PersonName',
+                'multiple' => true,
+                'expanded' => true
+            ])
             ->add('Add', SubmitType::class)
         ;
     }

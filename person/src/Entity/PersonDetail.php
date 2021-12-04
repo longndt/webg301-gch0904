@@ -38,6 +38,11 @@ class PersonDetail
      */
     private $Person;
 
+    /**
+     * @ORM\Column(type="string", length=14)
+     */
+    private $PersonCode;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -87,6 +92,18 @@ class PersonDetail
     public function setPerson(Person $Person): self
     {
         $this->Person = $Person;
+
+        return $this;
+    }
+
+    public function getPersonCode(): ?string
+    {
+        return $this->PersonCode;
+    }
+
+    public function setPersonCode(string $PersonCode): self
+    {
+        $this->PersonCode = $PersonCode;
 
         return $this;
     }
