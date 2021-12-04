@@ -38,6 +38,21 @@ class Car
      */
     private $Person;
 
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $CarColor;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $CarPrice;
+
+    /**
+     * @ORM\Column(type="string", length=20, nullable=true)
+     */
+    private $CarPlate;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -87,6 +102,42 @@ class Car
     public function setPerson(?Person $Person): self
     {
         $this->Person = $Person;
+
+        return $this;
+    }
+
+    public function getCarColor(): ?string
+    {
+        return $this->CarColor;
+    }
+
+    public function setCarColor(string $CarColor): self
+    {
+        $this->CarColor = $CarColor;
+
+        return $this;
+    }
+
+    public function getCarPrice(): ?float
+    {
+        return $this->CarPrice;
+    }
+
+    public function setCarPrice(float $CarPrice): self
+    {
+        $this->CarPrice = $CarPrice;
+
+        return $this;
+    }
+
+    public function getCarPlate(): ?string
+    {
+        return $this->CarPlate;
+    }
+
+    public function setCarPlate(?string $CarPlate): self
+    {
+        $this->CarPlate = $CarPlate;
 
         return $this;
     }
