@@ -15,6 +15,27 @@
         {% endblock %}
     </head>
     <body>
+        {% block nav %}
+        <div class="container mt-3 text-center">
+            <ul class="nav nav-pills nav-fill">
+                <h3>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path("view_all_person") }}">PERSON</a>
+                    </li>
+                </h3>
+                <h3>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path("view_all_car") }}">CAR</a>
+                    </li>
+                </h3>
+                <h3>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path("view_all_job") }}">JOB</a>
+                    </li>
+                </h3>
+            </ul>
+        </div>
+        {% endblock %}
         {% block body %}{% endblock %}
     </body>
 </html>

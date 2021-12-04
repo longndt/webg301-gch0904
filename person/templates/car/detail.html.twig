@@ -6,18 +6,34 @@
          <thead>
             <tr>
                <th>Car ID</th>
-               <th>Car Name</th>
                <th>Car Brand</th>
+               <th>Car Name</th>
                <th>Car Model</th>
+               <th>Car Color</th>
+               <th>Car Price</th>
+               <th>Car Plate</th>
+               <th>Car Owner</th>
                <th>Menu</th>
             </tr>
          </thead>
          <tbody>
             <tr>
                <td>{{ car.id }}</td>
-               <td>{{ car.CarName }}</td>
                <td>{{ car.CarBrand }}</td>
+               <td>{{ car.CarName }}</td>
                <td>{{ car.CarModel }}</td>
+               <td>{{ car.CarColor }}</td>
+               <td>{{ car.CarPrice }}</td>
+               <td>{{ car.CarPlate }}</td>
+               <td>
+                  {% if car.Person != null %}
+                     <a href="{{ path('view_person', {'id' : car.Person.id }) }}">
+                        {{ car.Person.PersonName }}
+                     </a>   
+                     {% else %}
+                        N/A
+                  {% endif %}              
+               </td>
                <td>
                   <a class="btn btn-warning" href="{{ path('edit_car', {'id' : car.id }) }}">
                      EDIT

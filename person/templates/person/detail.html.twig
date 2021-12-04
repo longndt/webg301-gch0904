@@ -7,6 +7,7 @@
             <tr>
                <th>Person Name</th>
                <th>Person Age</th>
+               <th>Person Code</th>
                <th>Person Address</th>
                <th>Person Mobile</th>
                <th>Person Birthday</th>
@@ -19,6 +20,13 @@
                <tr>
                   <td>{{ person.PersonName }} </td>
                   <td>{{ person.PersonAge }} </td>
+                     <td>
+                     {% if person.personDetail != null %}
+                        {{ person.personDetail.PersonCode }}
+                     {% else %}
+                         <i>N/A</i> 
+                     {% endif %}       
+                  </td>
                   <td>
                      {% if person.personDetail != null %}
                         {{ person.personDetail.PersonAddress }}

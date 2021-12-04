@@ -9,6 +9,7 @@
             <tr>
                <th>Car ID</th>
                <th>Car Name</th>
+               <th>Car Plate</th>
                <th>Menu</th>
             </tr>
          </thead>
@@ -18,9 +19,10 @@
                   <td>{{ car.id }}</td>
                   <td>
                    <a href="{{ path('view_car', {'id' : car.id }) }}">
-                         {{ car.CarName }}
+                         {{ car.CarBrand }}   {{ car.CarName }} 
                      </a>        
                   </td>
+                  <td>{{ car.CarPlate }}</td>
                   <td>
                      <a class="btn btn-primary" href="{{ path('view_car', {'id' : car.id }) }}">
                         DETAIL
