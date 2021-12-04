@@ -34,7 +34,7 @@ class Car
 
     /**
      * @ORM\ManyToOne(targetEntity=Person::class, inversedBy="cars")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $Person;
 

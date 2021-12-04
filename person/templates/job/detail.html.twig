@@ -18,7 +18,7 @@
                <td>{{ job.id }}</td>
                <td>{{ job.JobName }}</td>
                <td>{{ job.JobCompany }}</td>
-               <td>{{ job.Salary }}</td>       
+               <td>{{ job.Salary }} $</td>       
                <td>
                   {% for p in job.Person %}
                   <a href="{{ path('view_person', {'id': p.id })}}">

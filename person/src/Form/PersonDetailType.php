@@ -6,16 +6,41 @@ use App\Entity\PersonDetail;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class PersonDetailType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('PersonAddress')
-            ->add('PersonMobile')
-            ->add('PersonBirthday')
-            ->add('Person')
+            ->add('PersonAddress', TextType::class,
+            [
+                'label' => 'Person Address',
+                'required' => true,
+                'attr' => [
+                    'minlength' => 10,
+                    'maxlength' => 50
+                ]
+            ])
+            ->add('PersonMobile', TextType::class,
+            [
+                'label' => 'Person Mobile',
+                'required' => true,
+                'attr' => [
+                    'minlength' => 10,
+                    'maxlength' => 10
+                ]
+            ])
+            ->add('PersonBirthday', DateType::class,
+            [
+                'label' => 'Person Birthday',
+                'required' => true,
+                'widget' => 'single_text'
+            ])
+            //->add('Person')
+            ->add('Add', SubmitType::class)
         ;
     }
 

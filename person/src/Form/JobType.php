@@ -6,16 +6,41 @@ use App\Entity\Job;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class JobType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('JobName')
-            ->add('JobCompany')
-            ->add('Salary')
-            ->add('Person')
+            ->add('JobName', TextType::class,
+            [
+                'label' => 'Job Name',
+                'required' => true,
+                'attr' => [
+                    'minlength' => 5,
+                    'maxlength' => 20
+                ]
+            ])
+            ->add('JobCompany', TextType::class,
+            [
+                'label' => 'Job Company',
+                'required' => true,
+                'attr' => [
+                    'minlength' => 5,
+                    'maxlength' => 20
+                ]
+            ])
+            ->add('Salary', MoneyType::class,
+            [
+                'label' => 'Job Salary',
+                'required' => true,
+                'currency' => 'USD'
+            ])
+            // ->add('Person')
+            ->add('Add', SubmitType::class)
         ;
     }
 
