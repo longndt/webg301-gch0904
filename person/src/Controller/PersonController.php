@@ -28,12 +28,15 @@ class PersonController extends AbstractController
      */
     public function viewPerson ($id) {
         $person = $this->getDoctrine()->getRepository(Person::class)->find($id);
-   
-        return $this->render("person/detail.html.twig",
+        if ($person != null) {
+            return $this->render("person/detail.html.twig",
             [
                 'person' => $person
             ]
-        );
+            );
+        } else {
+            return $this->redirectToRoute("view_all_person");
+        }     
     }
 
     /**
@@ -41,9 +44,11 @@ class PersonController extends AbstractController
      */
     public function deletePerson ($id) {
         $person = $this->getDoctrine()->getRepository(Person::class)->find($id);
-        $manager = $this->getDoctrine()->getManager();
-        $manager->remove($person);
-        $manager->flush();
+        if ($person != null) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->remove($person);
+            $manager->flush();
+        }
         return $this->redirectToRoute("view_all_person");
     }
 

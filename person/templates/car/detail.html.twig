@@ -19,7 +19,10 @@
                <td>{{ car.CarBrand }}</td>
                <td>{{ car.CarModel }}</td>
                <td>
-                     <a class="btn btn-danger" href="{{ path('delete_car_by_id', {'id' : car.id }) }}">
+                  <a class="btn btn-warning" href="{{ path('edit_car', {'id' : car.id }) }}">
+                     EDIT
+                  </a>
+                  <a class="btn btn-danger" href="{{ path('delete_car_by_id', {'id' : car.id }) }}">
                      DELETE
                   </a>
                </td>

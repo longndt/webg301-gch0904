@@ -26,10 +26,14 @@ class JobController extends AbstractController
      */
     public function viewJob ($id) {
         $job = $this->getDoctrine()->getRepository(Job::class)->find($id);
-        return $this->render("job/detail.html.twig",
-        [
-            'job' => $job
-        ]);
+        if ($job != null) {
+            return $this->render("job/detail.html.twig",
+            [
+                'job' => $job
+            ]);
+        } else {
+            return $this->redirectToRoute("view_all_job");
+        }
     }
 
     /**
@@ -37,8 +41,11 @@ class JobController extends AbstractController
      */
     public function deleteJob ($id) {
         $job = $this->getDoctrine()->getRepository(Job::class)->find($id);
-        $manager = $this->getDoctrine()->getManager();
-        $manager->remove($job);
+        if ($job != null) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->remove($job);
+            $manager->flush();
+        }
         return $this->redirectToRoute("view_all_job");
     }
 

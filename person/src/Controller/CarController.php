@@ -27,11 +27,15 @@ class CarController extends AbstractController
      */
     public function viewCar ($id) {
         $car = $this->getDoctrine()->getRepository(Car::class)->find($id);
-        return $this->render("car/detail.html.twig",
+        if ($car != null) {
+            return $this->render("car/detail.html.twig",
             [
                 'car' => $car
             ]
         );
+        } else {
+            return $this->redirectToRoute("view_all_car");
+        }     
     }
 
     /**
@@ -39,9 +43,11 @@ class CarController extends AbstractController
      */
     public function deleteCar ($id) {
        $car = $this->getDoctrine()->getRepository(Car::class)->find($id);
-       $manager = $this->getDoctrine()->getManager();
-       $manager->remove($car);
-       $manager->flush();
+       if ($car != null) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->remove($car);
+            $manager->flush();
+       }
        return $this->redirectToRoute("view_all_car");
     }
 

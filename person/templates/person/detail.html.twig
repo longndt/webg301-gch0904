@@ -22,16 +22,22 @@
                   <td>
                      {% if person.personDetail != null %}
                         {{ person.personDetail.PersonAddress }}
+                     {% else %}
+                         <i>N/A</i> 
                      {% endif %}       
                   </td>
                   <td>
                      {% if person.personDetail != null %}
                           {{ person.personDetail.PersonMobile }}
+                     {% else %}
+                         <i>N/A</i> 
                      {% endif %}        
                   </td>
                   <td>
                      {% if person.personDetail != null %}
                         {{ person.personDetail.PersonBirthday | date('d/m/Y') }}
+                     {% else %}
+                         <i>N/A</i> 
                      {% endif %}
                   </td>
                   <td> 
@@ -43,14 +49,21 @@
                      {% endfor %}
                   </td>
                   <td>
-                     {% for job in person.jobs %}
+                     {% if person.jobs != null %}
+                        {% for job in person.jobs %}
                         <a href="{{ path('view_job', {'id' : job.id }) }}">
                              {{ job.JobName }}
                         </a>
                         <br>
-                     {% endfor %}
+                        {% endfor %}
+                     {% else %}
+                        <i>N/A</i> 
+                     {% endif %}                 
                    </td>
                   <td>
+                     <a class="btn btn-warning" href="{{ path('edit_person', {'id' : person.id }) }}">
+                        EDIT
+                     </a>
                      <a class="btn btn-danger" href="{{ path('delete_person_by_id', {'id' : person.id }) }}">
                         DELETE
                      </a>

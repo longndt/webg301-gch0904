@@ -28,6 +28,9 @@
                   {% endfor %}
                </td>
                <td>
+                  <a class="btn btn-warning" href="{{ path ('edit_job', {'id' : job.id }) }}">
+                  EDIT
+                  </a>
                   <a class="btn btn-danger" href="{{ path ('delete_job_by_id', {'id' : job.id }) }}">
                   DELETE
                   </a>

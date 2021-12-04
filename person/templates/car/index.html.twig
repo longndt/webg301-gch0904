@@ -2,7 +2,9 @@
 
 {% block body %}
    <div class="container">
-      <table class="table text-center">
+     {% if cars != null %}
+         <a class="btn btn-outline-primary mt-3" href="{{ path ("add_car")}}">Add new car</a>
+         <table class="table text-center">
          <thead>
             <tr>
                <th>Car ID</th>
@@ -23,13 +25,22 @@
                      <a class="btn btn-primary" href="{{ path('view_car', {'id' : car.id }) }}">
                         DETAIL
                      </a>
-                      <a class="btn btn-danger" href="{{ path('delete_car_by_id', {'id' : car.id }) }}">
+                     <a class="btn btn-warning" href="{{ path('edit_car', {'id' : car.id }) }}">
+                        EDIT
+                     </a>
+                     <a class="btn btn-danger" href="{{ path('delete_car_by_id', {'id' : car.id }) }}">
                         DELETE
                      </a>
                   </td>
                </tr>
             {% endfor %}    
          </tbody> 
-      </table>
+       </table>
+     {% else %}
+         <center>
+               <h1 class="text text-warning mt-5">There is no cars in database</h1>
+               <a class="btn btn-outline-primary" href="{{ path ("add_car")}}">Add new car</a>
+         </center>     
+     {% endif %}
    </div>
 {% endblock %}
