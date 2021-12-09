@@ -3,11 +3,18 @@
 {% block body %}
    <div class="container">
        <a class="btn btn-outline-secondary mt-3" href="{{ path ('add_job')}}">Add new job</a>
+       <br><br>
+       <form action="{{ path("search_job_salary") }}">
+          <input type="number" name="min" required placeholder="Min salary">
+          <input type="number" name="max" required placeholder="Max salary">
+          <input type="submit" value="Search">
+       </form>
        <table class="table table-striped">
          <thead>
             <tr>
                <th>Job ID</th>
                <th>Job Name</th>
+               <th>Job Salary</th>
                <th>Menu</th>
             </tr>
          </thead>
@@ -16,6 +23,7 @@
                <tr>
                   <td>{{ job.id }}</td>
                   <td>{{ job.JobName }}</td>
+                  <td>{{ job.Salary }} $</td>
                   <td>
                      <a class="btn btn-primary" href="{{ path ('view_job', {'id' : job.id }) }}">
                      DETAIL

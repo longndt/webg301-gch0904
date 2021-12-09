@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Job;
 use App\Form\JobType;
+use App\Repository\JobRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -85,6 +86,29 @@ class JobController extends AbstractController
         return $this->renderForm("job/edit.html.twig",
         [
             'jobForm' => $jobForm
+        ]);
+    }
+
+    /**
+     * @Route("/job/searchbysalary", name="search_job_salary")
+     */
+    public function searchJob (Request $request) {
+        $min = $request->get("min");
+        $max = $request->get("max");
+        
+        $sql = "SELECT * FROM job WHERE job.salary >= :min AND job.salary <= :max";
+
+        $manager = $this->getDoctrine()->getManager();
+        $statement = $manager->getConnection()->prepare($sql);
+        $statement->bindValue("min",$min);
+        $statement->bindValue("max",$max);
+        $statement->execute();
+
+        $result = $statement->fetchAll();
+
+        return $this->render("job/index.html.twig",
+        [
+            "jobs" => $result
         ]);
     }
 }

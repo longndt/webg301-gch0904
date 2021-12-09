@@ -19,32 +19,19 @@ class JobRepository extends ServiceEntityRepository
         parent::__construct($registry, Job::class);
     }
 
-    // /**
-    //  * @return Job[] Returns an array of Job objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('j')
-            ->andWhere('j.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('j.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    /**
+     * @return job[]
+     */
+    // public function searchJob ($min, $max) {
+    //     $connection = $this->getEntityManager()->getConnection();
+    //     $query = "
+    //             SELECT * FROM Job j
+    //             WHERE j.Salary >= :min AND j.Salary <= :max
+    //             ORDER BY j.Salary DESC
+    //     ";
+    //     $statement = $connection->prepare($query);
+    //     $statement->execute(['min' => $min, 'max' => $max]);
 
-    /*
-    public function findOneBySomeField($value): ?Job
-    {
-        return $this->createQueryBuilder('j')
-            ->andWhere('j.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+    //     return $statement->fetchAll();
+    // }
 }
