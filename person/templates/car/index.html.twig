@@ -5,20 +5,33 @@
      {% if cars != null %}
          <a class="btn btn-outline-primary mt-3" href="{{ path ("add_car")}}">Add new car</a>
          <br><br>
-         Sort by price:     
-          <a href="{{ path("sort_price_asc_car") }}"> 
-            <img src="{{ asset("images/up.jpg") }}" width=30 height=30>
-          </a> 
-           <a href="{{ path("sort_price_desc_car") }}"> 
-            <img src="{{ asset("images/down.jpg") }}" width=30 height=30>
-          </a>   
+         <form action="{{ path ("sort_by_name_car") }}" method="POST">
+            <input type="search" name="name" required placeholder="Enter car name">
+            <input type="submit" value="Search">
+         </form>
+         <br><br>   
+          
          <table class="table text-center">
          <thead>
             <tr>
                <th>Car ID</th>
                <th>Car Name</th>
-               <th>Car Plate</th>
-               <th>Car Price</th>
+               <th>Car Model
+                  <a href="{{ path("sort_model_asc_car") }}"> 
+                     <img src="{{ asset("images/up.jpg") }}" width=15 height=15>
+                  </a> 
+                  <a href="{{ path("sort_model_desc_car") }}"> 
+                     <img src="{{ asset("images/down.jpg") }}" width=15 height=15>
+                  </a>  
+               </th>
+               <th>Car Price
+                  <a href="{{ path("sort_price_asc_car") }}"> 
+                     <img src="{{ asset("images/up.jpg") }}" width=15 height=15>
+                  </a> 
+                  <a href="{{ path("sort_price_desc_car") }}"> 
+                     <img src="{{ asset("images/down.jpg") }}" width=15 height=15>
+                  </a>  
+               </th>
                <th>Menu</th>
             </tr>
          </thead>
@@ -31,8 +44,8 @@
                          {{ car.CarBrand }}   {{ car.CarName }} 
                      </a>        
                   </td>
-                  <td>{{ car.CarPlate }}</td>
-                  <td>{{ car.CarPrice }} $ </td>
+                  <td>{{ car.CarModel }}</td>
+                  <td> {{ car.CarPrice }} $ </td>
                   <td>
                      <a class="btn btn-primary" href="{{ path('view_car', {'id' : car.id }) }}">
                         DETAIL
@@ -50,8 +63,11 @@
        </table>
      {% else %}
          <center>
-               <h1 class="text text-warning mt-5">There is no cars in database</h1>
-               <a class="btn btn-outline-primary" href="{{ path ("add_car")}}">Add new car</a>
+               <h1 class="text text-warning mt-5">No car found !</h1>
+               <form action="{{ path ("sort_by_name_car") }}" method="POST">
+                  <input type="search" name="name" required placeholder="Enter car name">
+                  <input type="submit" value="Search">
+               </form>
          </center>     
      {% endif %}
    </div>

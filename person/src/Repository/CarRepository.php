@@ -32,4 +32,38 @@ class CarRepository extends ServiceEntityRepository
                         ")
                     ->getResult();
     }
+
+    /**
+     * @return Car[]
+     */
+    public function sortModelAsc() {
+        return $this->createQueryBuilder('car')
+                    ->orderBy('car.CarModel','asc')
+                    ->getQuery()
+                    ->getResult();
+    }
+
+     /**
+     * @return Car[]
+     */
+    public function sortModelDesc() {
+        return $this->createQueryBuilder('car')
+                    ->orderBy('car.CarModel','desc')
+                    ->getQuery()
+                    ->getResult();
+    }
+
+    /**
+     * @return Car[]
+     */
+    public function searchByName ($name) {
+        return $this->createQueryBuilder('c')
+                    ->andWhere('c.CarName LIKE :name')
+                    ->setParameter('name', '%' . $name . '%')
+                    ->orderBy('c.CarPrice','asc')
+                    ->setMaxResults(3)
+                    ->getQuery()
+                    ->getResult()
+                    ;
+    }
 }

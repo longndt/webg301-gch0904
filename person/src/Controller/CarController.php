@@ -132,4 +132,38 @@ class CarController extends AbstractController
             'cars' => $result
         ]);                              
     }
+
+    /**
+     * @Route("/car/sort/model/asc", name = "sort_model_asc_car")
+     */
+    public function sortCarModelAsc(CarRepository $carRepository) {
+        $result = $carRepository->sortModelAsc();
+        return $this->render("car/index.html.twig",
+        [
+            "cars" => $result
+        ]);
+    }
+
+     /**
+     * @Route("/car/sort/model/desc", name = "sort_model_desc_car")
+     */
+    public function sortCarModelDesc(CarRepository $carRepository) {
+        $result = $carRepository->sortModelDesc();
+        return $this->render("car/index.html.twig",
+        [
+            "cars" => $result
+        ]);
+    }
+
+    /**
+     * @Route("/car/search", name = "sort_by_name_car")
+     */
+    public function sortCar (CarRepository $carRepository, Request $request) {
+        $name = $request->get("name");
+        $result = $carRepository->searchByName($name);
+        return $this->render("car/index.html.twig",
+        [
+            "cars" => $result
+        ]);
+    }
 }
