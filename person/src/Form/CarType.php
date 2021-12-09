@@ -19,75 +19,94 @@ class CarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('CarBrand', ChoiceType::class,
-            [
-                'label' => 'Car Brand',
-                'required' => true,
-                'choices' => [
-                    "Hyundai" => "Hyundai",
-                    "Kia" => "Kia",
-                    "Toyota" => "Toyota",
-                    "Ford" => "Ford"
-                ],
-                'attr' => [
-                    'maxlength' => 20,
-                    'minlength' => 3
+            ->add(
+                'CarBrand',
+                ChoiceType::class,
+                [
+                    'label' => 'Car Brand',
+                    'required' => true,
+                    'choices' => [
+                        "Hyundai" => "Hyundai",
+                        "Kia" => "Kia",
+                        "Toyota" => "Toyota",
+                        "Ford" => "Ford"
+                    ],
+                    'attr' => [
+                        'maxlength' => 20,
+                        'minlength' => 3
+                    ]
                 ]
-            ])
-            ->add('CarName', TextType::class,
-            [
-                'label' => 'Car Name',
-                'required' => true,
-                'attr' => [
-                    'maxlength' => 20,
-                    'minlength' => 3
+            )
+            ->add(
+                'CarName',
+                TextType::class,
+                [
+                    'label' => 'Car Name',
+                    'required' => true,
+                    'attr' => [
+                        'maxlength' => 20,
+                        'minlength' => 3
+                    ]
                 ]
-            ])
-            ->add('CarModel', IntegerType::class,
-            [
-                'label' => 'Car Model',
-                'required' => true,
-                'attr' => [
-                    'min' => 2000,
-                    'max' => 2021
+            )
+            ->add(
+                'CarModel',
+                IntegerType::class,
+                [
+                    'label' => 'Car Model',
+                    'required' => true,
+                    'attr' => [
+                        'min' => 2000,
+                        'max' => 2021
+                    ]
                 ]
-            ])
-            ->add('CarPrice', MoneyType::class,
-            [
-                'label' => 'Car Price',
-                'required' => true,
-                'currency' => 'USD'
-            ])
-            ->add('CarColor', ChoiceType::class,
-            [
-                'label' => 'Car Color',
-                'required' => true,
-                'choices' => [
-                    "Black" => "Black",
-                    "White" => "White",
-                    "Blue" => "Blue",
-                    "Red" => "Red"
+            )
+            ->add(
+                'CarPrice',
+                MoneyType::class,
+                [
+                    'label' => 'Car Price',
+                    'required' => true,
+                    'currency' => 'USD'
                 ]
-            ])
-            ->add('CarPlate', TextType::class,
-            [
-                'label' => 'Car Plate',
-                'required' => true,
-                'attr' => [
-                    'minlength' => 8,
-                    'maxlength' => 10
+            )
+            ->add(
+                'CarColor',
+                ChoiceType::class,
+                [
+                    'label' => 'Car Color',
+                    'required' => true,
+                    'choices' => [
+                        "Black" => "Black",
+                        "White" => "White",
+                        "Blue" => "Blue",
+                        "Red" => "Red"
+                    ]
                 ]
-            ])
-            ->add('Person', EntityType::class,
-            [
-                'label' => 'Car Owner',
-                'class' => Person::class,
-                'choice_label' => 'PersonName',
-                // 'multiple' => false,
-                // 'expanded' => false
-            ])
-            ->add('Add', SubmitType::class)
-        ;
+            )
+            ->add(
+                'CarPlate',
+                TextType::class,
+                [
+                    'label' => 'Car Plate',
+                    'required' => true,
+                    'attr' => [
+                        'minlength' => 8,
+                        'maxlength' => 10
+                    ]
+                ]
+            )
+            ->add(
+                'Person',
+                EntityType::class,
+                [
+                    'label' => 'Car Owner',
+                    'class' => Person::class,
+                    'choice_label' => 'PersonName',
+                    // 'multiple' => false,
+                    // 'expanded' => false
+                ]
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver): void

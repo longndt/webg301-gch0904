@@ -18,41 +18,35 @@ class PersonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('PersonName', TextType::class,
-            [
-                'label' => 'Person Name',
-                'required' => true,
-                'attr' => [
-                    'minlength' => 5,
-                    'maxlength' => 20
+            ->add(
+                'PersonName',
+                TextType::class,
+                [
+                    'label' => 'Person Name',
+                    'required' => true,
+                    'attr' => [
+                        'minlength' => 5,
+                        'maxlength' => 20
+                    ]
                 ]
-            ])
-            ->add('PersonAge', IntegerType::class,
-            [
-                'label' => 'Person Age',
-                'required' => true,
-                'attr' => [
-                    'min' => 18,
-                    'max' => 60
+            )
+            ->add(
+                'PersonAge',
+                IntegerType::class,
+                [
+                    'label' => 'Person Age',
+                    'required' => true,
+                    'attr' => [
+                        'min' => 18,
+                        'max' => 60
+                    ]
                 ]
-            ])
-            ->add('personDetail', EntityType::class,
-            [
-                'label' => 'Person Detail',
-                'required' => true,
-                'class' => PersonDetail::class,
-                'choice_label' => "PersonCode",
-            ])
-            ->add('jobs', EntityType::class,
-            [
-                'label' => 'Jobs',
-                'required' => true,
-                'class' => Job::class,
-                'choice_label' => 'JobName',
-                'multiple' => true
-            ])
-            ->add('Add', SubmitType::class)
-        ;
+            )
+            ->add(
+                'personDetail',
+                PersonDetailType::class
+            )
+            ->add('Save', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

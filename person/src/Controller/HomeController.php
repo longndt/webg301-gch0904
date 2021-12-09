@@ -15,4 +15,9 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+
+    public function notfound()
+    {
+        return $this->redirectToRoute("home");
+    }
 }

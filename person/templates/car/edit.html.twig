@@ -4,6 +4,9 @@
 {% block body %}
    <div class="container mt-3 text-center">
       <h2 class="text-primary">Edit car</h2>
-   {{ form (carForm) }}
+    {{ form_start (carForm) }}   
+         {{ form_widget (carForm) }}
+            <input class="btn btn-success" type="submit" value="Edit">
+         {{ form_end (carForm) }}
    </div>
 {% endblock %}

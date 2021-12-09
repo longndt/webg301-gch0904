@@ -18,43 +18,43 @@ class PersonDetailType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('PersonAddress', TextType::class,
-            [
-                'label' => 'Person Address',
-                'required' => true,
-                'attr' => [
-                    'minlength' => 10,
-                    'maxlength' => 50
+            ->add(
+                'PersonAddress',
+                TextType::class,
+                [
+                    'label' => 'Person Address',
+                    'required' => true,
+                    'attr' => [
+                        'minlength' => 10,
+                        'maxlength' => 50
+                    ]
                 ]
-            ])
-            ->add('PersonMobile', TextType::class,
-            [
-                'label' => 'Person Mobile',
-                'required' => true,
-                'attr' => [
-                    'minlength' => 10,
-                    'maxlength' => 10
+            )
+            ->add(
+                'PersonMobile',
+                TextType::class,
+                [
+                    'label' => 'Person Mobile',
+                    'required' => true,
+                    'attr' => [
+                        'minlength' => 10,
+                        'maxlength' => 10
+                    ]
                 ]
-            ])
-            ->add('PersonBirthday', DateType::class,
-            [
-                'label' => 'Person Birthday',
-                'required' => true,
-                'widget' => 'single_text'
-            ])
-            ->add('PersonCode', NumberType::class,[
+            )
+            ->add(
+                'PersonBirthday',
+                DateType::class,
+                [
+                    'label' => 'Person Birthday',
+                    'required' => true,
+                    'widget' => 'single_text'
+                ]
+            )
+            ->add('PersonCode', NumberType::class, [
                 'label' => 'Person Number',
                 'required' => true,
-            ])
-            ->add('Person', EntityType::class,
-            [
-                'label' => 'Person Name',
-                'required' => true,
-                'class' => Person::class,
-                'choice_label' => 'PersonName'
-            ])
-            ->add('Add', SubmitType::class)
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
