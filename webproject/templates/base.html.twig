@@ -16,6 +16,29 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block flash %}
+            <div class="container col-md-8 mt-3 text-center">
+                {% for flash in app.flashes("Error") %}
+                    <p class="alert alert-danger">{{ flash }} </p>
+                {% endfor %}
+                {% for flash in app.flashes("Success") %}
+                    <p class="alert alert-success">{{ flash }} </p>
+                {% endfor %}
+            </div>
+        {% endblock %}
+        {% block nav %}
+            <nav class="navbar navbar-expand navbar-light bg-light">
+                <div class="nav navbar-nav">
+                    <h3><a class="nav-item nav-link" href="{{ path('home') }}">Home</a></h3>
+                    <h3><a class="nav-item nav-link" href="{{ path('book_index') }}">Book</a></h3>
+                    <h3><a class="nav-item nav-link" href="{{ path('home') }}">Author</a></h3>
+                    <h3><a class="nav-item nav-link" href="{{ path('home') }}">Genre</a></h3>
+                </div>
+            </nav>
+        {% endblock %}
+
+        {% block body %}
+        
+        {% endblock %}
     </body>
 </html>

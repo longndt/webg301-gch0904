@@ -2,26 +2,30 @@
 
 {% block body %}
     <div class="container-md col-md-8 mt-3">
+    {# {% if book != null %} #}
     <table class="table table-responsive-md">
         <thead>
             <tr>
-                <th>Book ID</th>
                 <th>Book Title</th>
+                <th>Book Price</th>
                 <th>Book Cover</th>
+                <th>Book Year</th>
+                <th>Book Author</th>
+                <th>Book Genre</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-          {% for book in books %}
                <tr>
-                    <td>{{ book.id }}</td>
                     <td>{{ book.title }}</td>
+                    <td>{{ book.price }} $ </td>
                     <td>
-                        <a href="{{ path('book_detail', {'id': book.id }) }}">
-                            <img src="{{ asset('covers/'~book.cover) }}" width="100" height="120">   
-                        </a>          
+                        <img src="{{ asset('covers/'~book.cover) }}" width="100" height="120">          
                     </td>
-                    <td>       
+                    <td>{{ book.year }}</td>
+                    <td> </td>
+                    <td> </td>
+                    <td> 
                         <a class="btn btn-warning" href="{{ path('book_edit', {'id': book.id }) }}">
                         Edit
                         </a>
@@ -31,8 +35,11 @@
                         </a>
                     </td>
                 </tr>
-          {% endfor %}       
         </tbody>
     </table>
+    {# {% else %}
+        <h3> Book not existed </h3>
+        <a href="{{ path ('book_index') }}"> Redirect to book list </a>
+    {% endif %} #}
     </div>
 {% endblock %}
