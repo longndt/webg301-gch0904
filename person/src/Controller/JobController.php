@@ -104,7 +104,10 @@ class JobController extends AbstractController
         $statement->bindValue("max",$max);
         $statement->execute();
 
+        
+        do{
         $result = $statement->fetchAll();
+      } while($statement->nextRowSet());
 
         return $this->render("job/index.html.twig",
         [

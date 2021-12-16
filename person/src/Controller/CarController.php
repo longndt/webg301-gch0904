@@ -9,13 +9,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CarController extends AbstractController
 {
     /**
      * @Route("/car/viewall/" , name = "view_all_car")
      */
-    public function viewAllCar()
+    public function viewAllCar() 
     {
         $cars = $this->getDoctrine()->getRepository(Car::class)->findAll();
         return $this->render(
@@ -24,6 +25,9 @@ class CarController extends AbstractController
                 'cars' => $cars
             ]
         );
+        // return $this->json(
+        //     ['cars' => $cars ]
+        // );
     }
 
     /**
