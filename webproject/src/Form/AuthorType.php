@@ -2,15 +2,15 @@
 
 namespace App\Form;
 
-use App\Entity\Author;
 use App\Entity\Book;
-use Doctrine\DBAL\Types\TextType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Author;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class AuthorType extends AbstractType
 {
@@ -49,14 +49,14 @@ class AuthorType extends AbstractType
                     'Female' => 'Female'
                 ]
             ])
-            ->add('books', EntityType::class,
-            [
-                'label' => 'Published book(s)',
-                'class' => Book::class,
-                'choice_label' => 'title',
-                'multiple' => true,
-                'expanded' => false
-            ])
+            // ->add('books', EntityType::class,
+            // [
+            //     'label' => 'Published book(s)',
+            //     'class' => Book::class,
+            //     'choice_label' => 'title',
+            //     'multiple' => true,
+            //     'expanded' => false
+            // ])
         ;
     }
 

@@ -23,12 +23,13 @@ class GenreController extends AbstractController
     }
 
     /**
-     * @Route("/genre/{id}", name = "genre_detail")
+     * @Route("/genre/detail/{id}", name = "genre_detail")
      */
     public function genreDetail($id) {
         $genre = $this->getDoctrine()->getRepository(Genre::class)->find($id);
         if ($genre == null) {
             $this->addFlash("Error", "Genre not existed");
+            return $this->redirectToRoute("genre_index");
         }
         return $this->render("genre/detail.html.twig",
         [
@@ -52,7 +53,7 @@ class GenreController extends AbstractController
         return $this->redirectToRoute("genre_index");
     }
 
-    /**
+     /**
      * @Route("/genre/add", name = "genre_add")
      */
     public function genreAdd(Request $request) {
@@ -92,9 +93,9 @@ class GenreController extends AbstractController
             return $this->redirectToRoute("genre_index");
         }
 
-        return $this->render("genre/edit.html.twig",
+        return $this->renderForm("genre/edit.html.twig",
         [
-            'genreForm' => $form->createView()
+            'genreForm' => $form
         ]);
     }
 }

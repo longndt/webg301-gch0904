@@ -1,3 +1,4 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+# genre_add:
+#     path: /genre/add
+#     controller: App\Controller\GenreController::genreAdd
+

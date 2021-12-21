@@ -20,12 +20,12 @@ class AuthorController extends AbstractController
         ]);
     }
 
-    #[Route('/author/{id}', name : 'author_detail')]
+    #[Route('/author/detail/{id}', name : 'author_detail')]
     public function authorDetail ($id) {
         $author = $this->getDoctrine()->getRepository(Author::class)->find($id);
         if ($author == null) {
             $this->addFlash("Error", "Author not existed");
-            return $this->redirect("author_index");
+            return $this->redirectToRoute("author_index");
         } 
         return $this->render("author/detail.html.twig",
         [
@@ -49,7 +49,7 @@ class AuthorController extends AbstractController
     
     #[Route('/author/add', name : 'author_add')]
     public function authorAdd (Request $request) {
-        $author = new Author;
+        $author = new Author();
         $form = $this->createForm(AuthorType::class,$author);
         $form->handleRequest($request);
 
@@ -58,7 +58,7 @@ class AuthorController extends AbstractController
             $manager->persist($author);
             $manager->flush();
 
-            $this->addFlash("Scccess", "Add author succeed");
+            $this->addFlash("Success", "Add author succeed");
             return $this->redirectToRoute("author_index");
         }
 
