@@ -1,8 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container-md col-md-8 mt-3">
-    <table class="table table-responsive-md">
+    <div class="container-md col-md-8 mt-3 text-center">
+      <a class="btn btn-primary" href="{{ path('book_add') }}">
+         Add book
+      </a>
+    <table class="table table-responsive-md mt-3">
         <thead>
             <tr>
                 <th>Book ID</th>

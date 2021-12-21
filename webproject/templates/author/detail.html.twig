@@ -8,20 +8,30 @@
     <table class="table table-responsive-md mt-3">
         <thead>
             <tr>
-                <th>Author ID</th>
                 <th>Author Name</th>
+                <th>Author Birthday</th>
+                <th>Author Address</th>
+                <th>Author Gender</th>
+                <th>Published Book(s)</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
         </thead>
         <tbody>
-            {% for author in authors %}
                 <tr>
-                    <td>{{ author.id }}</td>
-                    <td>
-                        <a class="text-decoration-none" href= "{{ path('author_detail', {'id' : author.id }) }}">
-                            {{ author.name }}
-                        </a>
+                    <td> {{ author.name }} </td>
+                    <td> {{ author.birthday | date('d/m/Y') }} </td>
+                    <td> {{ author.address }} </td>
+                    <td> {{ author.gender }} </td>
+                    <td> 
+                        {% if author.books != null %}
+                            {% for book in author.books %}
+                                <a class="text-decoration-none" href="{{ path('book_detail', {'id' : book.id }) }}">
+                                {{ book.title }}
+                                </a>
+                            <br>
+                        {% endfor %}
+                        {% endif %}         
                     </td>
                     <td>
                         <a href = "{{ path('author_edit', {'id' : author.id }) }}">
@@ -35,7 +45,6 @@
                         </a>
                     </td>
                 </tr>
-            {% endfor %}
         </tbody>
     </table>
 </div>
