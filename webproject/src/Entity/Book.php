@@ -71,15 +71,14 @@ class Book
         return $this;
     }
 
-    public function getCover(): ?string
+    public function getCover()
     {
         return $this->cover;
     }
 
-    public function setCover(?string $cover): self
+    public function setCover($cover)
     {
         $this->cover = $cover;
-
         return $this;
     }
 
