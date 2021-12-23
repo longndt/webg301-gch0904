@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Book;
 use App\Form\BookType;
+use App\Repository\BookRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -158,4 +159,37 @@ class BookController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/book/sort/id/asc", name="sort_book_id_asc")
+     */
+    public function sortBookByIdAsc (BookRepository $bookRepository) {
+        $books = $bookRepository->sortBookIdAsc();
+        return $this->render("book/index.html.twig",
+        [
+            'books' => $books
+        ]);
+    }
+
+     /**
+     * @Route("/book/sort/id/desc", name="sort_book_id_desc")
+     */
+    public function sortBookByIdDesc (BookRepository $bookRepository) {
+        $books = $bookRepository->sortBookIdDesc();
+        return $this->render("book/index.html.twig",
+        [
+            'books' => $books
+        ]);
+    }
+
+    /**
+     * @Route("/book/search", name="search_book_by_title")
+     */
+    public function searchBookByTitle (BookRepository $bookRepository, Request $request) {
+        $title = $request->get("title");
+        $books = $bookRepository->searchByTitle($title);
+        return $this->render("book/index.html.twig",
+        [
+            'books' => $books
+        ]);
+    }
 }
