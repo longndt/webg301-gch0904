@@ -1,14 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container-md col-md-8 mt-3 text-center">
-      <a class="btn btn-primary" href="{{ path('book_add') }}">
+    <div class="container-md col-md-8 mt-3">
+    {% if is_granted("ROLE_ADMIN") %}
+        <a class="btn btn-primary" href="{{ path('book_add') }}">
          Add book
-      </a>
+        </a>
+    {% endif %}
+      
       <br><br>
-      <form action="{{path('search_book_by_title')}}" method="POST">
-         <input type="search" name="title" required placeholder ="Search book by title">
-      </form>
+      <div class="form-group col-md-4">
+        <form action="{{path('search_book_by_title')}}" method="POST">
+            <input class="form-control" type="search" name="title" required placeholder ="Search book by title">
+        </form>
+      </div>
     {% if books == null %}
         <h4 class="text text-danger mt-3">No book found</h4>
     {% else %}
@@ -26,7 +31,9 @@
                     </th>
                     <th>Book Title</th>
                     <th>Book Cover</th>
-                    <th>Actions</th>
+                    {% if is_granted("ROLE_STAFF") %}
+                              <th>Actions</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -39,7 +46,8 @@
                                 <img src="{{ asset('covers/'~book.cover) }}" width="100" height="120">   
                             </a>          
                         </td>
-                        <td>       
+                        {% if is_granted("ROLE_STAFF") %}
+                            <td>       
                             <a class="btn btn-warning" href="{{ path('book_edit', {'id': book.id }) }}">
                             Edit
                             </a>
@@ -48,6 +56,7 @@
                             Delete
                             </a>
                         </td>
+                        {% endif %}       
                     </tr>
             {% endfor %}       
             </tbody>
