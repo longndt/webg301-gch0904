@@ -33,8 +33,8 @@ class BookType extends AbstractType
             ->add('cover', FileType::class, 
             [
                 'label' => 'Book Cover',
-                'data_class' => null
-                // 'required' => is_null($builder->getData()->getCover())
+                'data_class' => null,
+                'required' => is_null($builder->getData()->getCover())
             ])
             ->add('price', MoneyType::class,
             [
@@ -55,7 +55,6 @@ class BookType extends AbstractType
             ->add('genre', EntityType::class,
             [
                 'label' => 'Book Genre',
-                'required' => true,
                 'class' => Genre::class,
                 'choice_label' => 'name',
                 'multiple' => false,
@@ -64,7 +63,6 @@ class BookType extends AbstractType
             ->add('authors', EntityType::class,
             [
                 'label' => 'Book Authors',
-                'required' => true,
                 'class' => Author::class,
                 'choice_label' => 'name',
                 'multiple' => true,

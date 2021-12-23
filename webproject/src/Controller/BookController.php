@@ -121,6 +121,29 @@ class BookController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //code xử lý việc upload ảnh
+            //B1: lấy dữ liệu ảnh từ form
+            $file = $form['cover']->getData();
+            //B2: check xem ảnh có null không
+            if ($file != null) { //người dùng update ảnh mới
+                //B3: lấy ảnh từ file upload
+                $image = $book->getCover();
+                //B4: đặt tên mới cho ảnh
+                $imgName = uniqid();
+                //B5: lấy extension của file ảnh
+                $imgExtension = $image->guessExtension();
+                //B6: nối tên mới và extension thành tên file hoàn chỉnh
+                $imageName = $imgName . "." . $imgExtension;
+                //B7: di chuyển ảnh vào thư mục project
+                try {
+                    $image->move($this->getParameter('book_cover'), $imageName);
+                } catch (FileException $e) {
+                    throwException($e);
+                }
+                //B8: lưu tên ảnh vào DB
+                $book->setCover($imageName);
+            }
+
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($book);
             $manager->flush();

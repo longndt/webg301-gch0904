@@ -78,7 +78,13 @@ class Book
 
     public function setCover($cover)
     {
-        $this->cover = $cover;
+        /* nếu người dùng update cover mới cho book
+        thì set giá trị mới cho biến $cover
+        ngược lại bỏ qua việc set giá trị và 
+        giữ nguyên giá trị hiện tại => giữ lại ảnh cũ */
+        if ($cover != null) {
+            $this->cover = $cover;
+        }
         return $this;
     }
 
